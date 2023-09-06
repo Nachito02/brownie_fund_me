@@ -46,6 +46,14 @@ contract FundMe {
         funders.push(msg.sender);
     }
 
+    function getEntranceFee() public view returns(uint256) {
+        uint256 miniumUSD = 50 * 10 ** 18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10**18;
+
+        return((miniumUSD * precision) / price) +1;
+    }
+
     //function to get the version of the chainlink pricefeed
     function getVersion() public view returns (uint256) {
        
