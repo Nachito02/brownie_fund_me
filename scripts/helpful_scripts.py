@@ -3,10 +3,15 @@ from web3 import Web3
 
 DECIMALS = 8
 STARTING_PRICE = 20000000000
-LOCAL_BLOCKCHAIN_ENVIROMENTS = ["development", "ganache-local"]
+LOCAL_BLOCKCHAIN_ENVIROMENTS = ["development", "ganache-local", "mainnet-fork-dev"]
+FORKED_LOCAL_ENVIROMENTS = ["mainnet-fork"]
+
 
 def getAccount():
-    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIROMENTS:
+    if (
+        network.show_active() in LOCAL_BLOCKCHAIN_ENVIROMENTS
+        or network.show_active() in FORKED_LOCAL_ENVIROMENTS
+    ):
         return accounts[0]
     else:
         return accounts.add(config["wallets"]["from_key"])
