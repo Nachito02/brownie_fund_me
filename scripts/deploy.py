@@ -24,6 +24,7 @@ def deploy_found_me():
     )
 
     print(f"Contract deployed to {found_me}")
+    return found_me
 
 
 def main():
